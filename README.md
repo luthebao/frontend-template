@@ -1,73 +1,135 @@
-# React + TypeScript + Vite
+# Frontend Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React frontend template with TypeScript, Vite, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** with TypeScript
+- **Vite** (using rolldown-vite for faster builds)
+- **React Router 7** for routing
+- **TanStack Query** for server state management
+- **Zustand** with Immer middleware for client state
+- **Tailwind CSS 4** with shadcn/ui components
+- **Sonner** for toast notifications
 
-## React Compiler
+## Prerequisites
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Node.js 18+
+- pnpm (recommended) or npm
 
-## Expanding the ESLint configuration
+## Local Development
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 1. Install dependencies
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+pnpm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Start the development server
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+pnpm dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The app will be available at `http://localhost:5173`.
+
+### 3. Other commands
+
+```bash
+pnpm build      # Type-check and build for production
+pnpm preview    # Preview the production build locally
+pnpm lint       # Run ESLint
+```
+
+## Deploy to Cloudflare Pages
+
+### Option 1: Git Integration (Recommended)
+
+1. Push your code to a GitHub or GitLab repository
+
+2. Go to [Cloudflare Dashboard](https://dash.cloudflare.com/) > **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**
+
+3. Select your repository and configure the build settings:
+   - **Framework preset**: None
+   - **Build command**: `pnpm build`
+   - **Build output directory**: `dist`
+   - **Root directory**: `/` (or your project path if in a monorepo)
+
+4. Add environment variable (if using pnpm):
+   - **Variable name**: `PNPM_VERSION`
+   - **Value**: `9` (or your preferred version)
+
+5. Click **Save and Deploy**
+
+Cloudflare will automatically deploy on every push to your main branch.
+
+### Option 2: Direct Upload with Wrangler CLI
+
+1. Install Wrangler globally:
+
+```bash
+pnpm add -g wrangler
+```
+
+1. Authenticate with Cloudflare:
+
+```bash
+wrangler login
+```
+
+1. Build your project:
+
+```bash
+pnpm build
+```
+
+1. Deploy to Cloudflare Pages:
+
+```bash
+wrangler pages deploy dist --project-name=your-project-name
+```
+
+### SPA Routing Configuration
+
+For single-page apps with client-side routing, create a `public/_redirects` file:
+
+```text
+/*    /index.html   200
+```
+
+Or create a `public/_routes.json`:
+
+```json
+{
+  "version": 1,
+  "include": ["/*"],
+  "exclude": ["/assets/*"]
+}
+```
+
+## Project Structure
+
+```text
+src/
+├── components/
+│   ├── ui/          # shadcn/ui components
+│   └── layout/      # Layout components
+├── pages/           # Page components
+├── stores/          # Zustand stores
+├── lib/             # Utility functions
+└── main.tsx         # App entry point
+```
+
+## Adding UI Components
+
+```bash
+npx shadcn@latest add <component-name>
+```
+
+## Path Alias
+
+Use `@/` to reference the `src/` directory:
+
+```tsx
+import { Button } from "@/components/ui/button"
 ```
