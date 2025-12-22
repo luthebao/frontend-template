@@ -16,6 +16,7 @@ This skill guides how to use the latest version of Tailwind CSS
 
 - Always use the lastest document from:
   - [TailwindCSS for React](https://tailwindcss.com/docs/styling-with-utility-classes)
+  - [Shadcn Components](https://ui.shadcn.com/docs/components)
 - Remember not to use config file `tailwind.config.js` if user didn't require
 
 ## Tailwind Core Changes
