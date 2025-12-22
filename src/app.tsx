@@ -1,4 +1,4 @@
-import Home from "./pages/home"
+import Landing from "./pages/landing"
 import { Route, Routes } from "react-router"
 import {
     QueryClient,
@@ -12,7 +12,7 @@ function App() {
     return (
         <QueryClientProvider client={queryClient}>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Landing />} />
             </Routes>
         </QueryClientProvider>
     )
