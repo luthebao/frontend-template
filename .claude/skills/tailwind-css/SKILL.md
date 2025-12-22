@@ -1,14 +1,22 @@
-# Tailwind CSS
+---
+name: tailwind-css
+description: Style components with classnames
+---
+
+# Tailwind CSS skill
+
+This skill guides how to use the latest version of Tailwind CSS
 
 ## Style Guidelines
 
 - Recommend to use ShadCN for UI components
-- Follow the following rules to use tailwind CSS v4.x
+- Follow the rules bellow to use Tailwind CSS v4
 
-## Tailwind Documents
+## Tailwind document resources
 
-- Always use the lastest document from: [TailwindCSS for NextJs](https://tailwindcss.com/docs/installation/framework-guides/nextjs)
-- Recommend not to use config file `tailwind.config.js`
+- Always use the lastest document from:
+  - [TailwindCSS for React](https://tailwindcss.com/docs/styling-with-utility-classes)
+- Remember not to use config file `tailwind.config.js` if user didn't require
 
 ## Tailwind Core Changes
 
@@ -16,23 +24,23 @@
 - Use `@theme` directive in CSS instead of `tailwind.config.js`
   - Example:
 
-        ```css
-        @import 'tailwindcss';
+    ```css
+    @import 'tailwindcss';
 
-        @theme {
-            --font-display: 'Satoshi', 'sans-serif';
-            --breakpoint-3xl: 1920px;
-            --color-avocado-500: oklch(0.84 0.18 117.33);
-            --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
-        }
-        ```
+    @theme {
+        --font-display: 'Satoshi', 'sans-serif';
+        --breakpoint-3xl: 1920px;
+        --color-avocado-500: oklch(0.84 0.18 117.33);
+        --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+    }
+    ```
 
   - Legacy `tailwind.config.js` files can still be imported using the `@config` directive:
 
-        ```css
-        @import 'tailwindcss';
-        @config "../../tailwind.config.js";
-        ```
+    ```css
+    @import 'tailwindcss';
+    @config "../../tailwind.config.js";
+    ```
 
 - **CSS import syntax**: Use `@import "tailwindcss"` instead of `@tailwind` directives
   - Old: `@tailwind base; @tailwind components; @tailwind utilities;`
@@ -129,26 +137,26 @@
 
 ## Custom Extensions
 
-- **Custom utilities**: Use `@utility` directive
+- **Custom utilities**: Use `@utility` directive:
 
-    ```css
+  ```css
     @utility tab-4 {
         tab-size: 4;
     }
-    ```
+  ```
 
 - **Custom variants**: Use `@variant` directive
 
-    ```css
-    @variant pointer-coarse (@media (pointer: coarse));
-    @variant theme-midnight (&:where([data-theme="midnight"] *));
-    ```
+  ```css
+  @variant pointer-coarse (@media (pointer: coarse));
+  @variant theme-midnight (&:where([data-theme="midnight"] *));
+  ```
 
 - **Plugins**: Use `@plugin` directive
 
-    ```css
-    @plugin "@tailwindcss/typography";
-    ```
+  ```css
+  @plugin "@tailwindcss/typography";
+  ```
 
 ## Breaking Changes
 
@@ -179,9 +187,9 @@
 
 - **Using a prefix**:
 
-    ```css
-    @import 'tailwindcss' prefix(tw);
-    ```
+  ```css
+  @import 'tailwindcss' prefix(tw);
+  ```
 
   - Results in classes like `tw:flex`, `tw:bg-red-500`, `tw:hover:bg-red-600`
 
@@ -192,37 +200,37 @@
 
 - **Legacy config files**:
 
-    ```css
-    @import 'tailwindcss';
-    @config "../../tailwind.config.js";
-    ```
+  ```css
+  @import 'tailwindcss';
+  @config "../../tailwind.config.js";
+  ```
 
 - **Dark mode configuration**:
 
-    ```css
-    @import 'tailwindcss';
-    @variant dark (&:where(.dark, .dark *));
-    ```
+  ```css
+  @import 'tailwindcss';
+  @variant dark (&:where(.dark, .dark *));
+  ```
 
 - **Container customization**: Extend with `@utility`
 
-    ```css
-    @utility container {
-        margin-inline: auto;
-        padding-inline: 2rem;
-    }
-    ```
+  ```css
+  @utility container {
+      margin-inline: auto;
+      padding-inline: 2rem;
+  }
+  ```
 
 - **Using `@apply` in Vue/Svelte**:
 
-    ```html
-    <style>
-        @import '../../my-theme.css' theme(reference);
-        /* or */
-        @import 'tailwindcss/theme' theme(reference);
+  ```html
+  <style>
+      @import '../../my-theme.css' theme(reference);
+      /* or */
+      @import 'tailwindcss/theme' theme(reference);
 
-        h1 {
-            @apply font-bold text-2xl text-red-500;
-        }
-    </style>
-    ```
+      h1 {
+          @apply font-bold text-2xl text-red-500;
+      }
+  </style>
+  ```
