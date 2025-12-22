@@ -118,8 +118,8 @@ function Landing() {
             {/* Hero Section */}
             <section className="relative pt-32 pb-24 px-6">
                 {/* Background elements */}
-                <div className="absolute top-20 right-0 w-[600px] h-[600px] bg-[#c8ff00]/10 rounded-full blur-[150px] pointer-events-none" />
-                <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
+                <div className="absolute top-20 right-0 w-150 h-150 bg-[#c8ff00]/10 rounded-full blur-[150px] pointer-events-none" />
+                <div className="absolute bottom-0 left-0 w-100 h-100 bg-purple-500/10 rounded-full blur-[120px] pointer-events-none" />
 
                 <div className="max-w-7xl mx-auto relative">
                     {/* Announcement banner */}
@@ -204,7 +204,7 @@ function Landing() {
                         className="mt-20 relative animate-fade-in-up"
                         style={{ animationDelay: '500ms' }}
                     >
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent z-10 pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-t from-[#0a0a0a] via-transparent to-transparent z-10 pointer-events-none" />
                         <div className="relative rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm overflow-hidden shadow-2xl shadow-black/50">
                             {/* Browser chrome */}
                             <div className="flex items-center gap-2 px-4 py-3 border-b border-white/10 bg-white/5">
@@ -220,7 +220,7 @@ function Landing() {
                                 </div>
                             </div>
                             {/* Mock dashboard */}
-                            <div className="p-6 min-h-[400px] bg-gradient-to-br from-[#111] to-[#0a0a0a]">
+                            <div className="p-6 min-h-100 bg-linear-to-br from-[#111] to-[#0a0a0a]">
                                 <div className="grid grid-cols-4 gap-4 mb-6">
                                     {stats.map((stat, i) => (
                                         <div key={i} className="p-4 rounded-xl bg-white/5 border border-white/5">
@@ -236,7 +236,7 @@ function Landing() {
                                             {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((h, i) => (
                                                 <div
                                                     key={i}
-                                                    className="flex-1 rounded-t bg-gradient-to-t from-[#c8ff00]/50 to-[#c8ff00]"
+                                                    className="flex-1 rounded-t bg-linear-to-t from-[#c8ff00]/50 to-[#c8ff00]"
                                                     style={{ height: `${h}%` }}
                                                 />
                                             ))}
@@ -295,9 +295,9 @@ function Landing() {
                         {features.map((feature, i) => (
                             <div
                                 key={i}
-                                className="group relative p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#c8ff00]/20 transition-all duration-300"
+                                className="group relative p-8 rounded-2xl border border-white/5 bg-white/2 hover:bg-white/4 hover:border-[#c8ff00]/20 transition-all duration-300"
                             >
-                                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-[#c8ff00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                <div className="absolute inset-0 rounded-2xl bg-linear-to-br from-[#c8ff00]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 <div className="relative">
                                     <div className="w-12 h-12 rounded-xl bg-[#c8ff00]/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                                         <feature.icon className="w-6 h-6 text-[#c8ff00]" />
@@ -312,12 +312,12 @@ function Landing() {
             </section>
 
             {/* Bento Grid Feature Highlight */}
-            <section className="py-24 px-6 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent">
+            <section className="py-24 px-6 bg-linear-to-b from-transparent via-white/2 to-transparent">
                 <div className="max-w-7xl mx-auto">
                     <div className="grid md:grid-cols-3 gap-6">
                         {/* Large feature card */}
-                        <div className="md:col-span-2 md:row-span-2 relative p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-[#c8ff00]/10 to-transparent overflow-hidden group">
-                            <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-[#c8ff00]/20 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-700" />
+                        <div className="md:col-span-2 md:row-span-2 relative p-8 rounded-2xl border border-white/10 bg-linear-to-br from-[#c8ff00]/10 to-transparent overflow-hidden group">
+                            <div className="absolute top-0 right-0 w-75 h-75 bg-[#c8ff00]/20 rounded-full blur-[100px] group-hover:scale-150 transition-transform duration-700" />
                             <div className="relative z-10">
                                 <h3 className="font-clash font-bold text-3xl mb-4">AI-Powered Automation</h3>
                                 <p className="text-lg text-white/60 mb-8 max-w-md">
@@ -343,7 +343,7 @@ function Landing() {
                         </div>
 
                         {/* Smaller cards */}
-                        <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                        <div className="p-6 rounded-2xl border border-white/10 bg-white/2">
                             <div className="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center mb-4">
                                 <Shield className="w-5 h-5 text-purple-400" />
                             </div>
@@ -351,7 +351,7 @@ function Landing() {
                             <p className="text-sm text-white/40">SOC2 Type II certified with end-to-end encryption.</p>
                         </div>
 
-                        <div className="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                        <div className="p-6 rounded-2xl border border-white/10 bg-white/2">
                             <div className="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center mb-4">
                                 <BarChart3 className="w-5 h-5 text-blue-400" />
                             </div>
@@ -378,7 +378,7 @@ function Landing() {
                         {testimonials.map((testimonial, i) => (
                             <div
                                 key={i}
-                                className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:border-white/10 transition-colors"
+                                className="p-6 rounded-2xl border border-white/5 bg-white/2 hover:border-white/10 transition-colors"
                             >
                                 <div className="flex items-center gap-1 mb-4">
                                     {[...Array(5)].map((_, j) => (
@@ -387,7 +387,7 @@ function Landing() {
                                 </div>
                                 <p className="text-lg mb-6 text-white/80">"{testimonial.quote}"</p>
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#c8ff00] to-[#96ff00] flex items-center justify-center text-black font-semibold text-sm">
+                                    <div className="w-10 h-10 rounded-full bg-linear-to-br from-[#c8ff00] to-[#96ff00] flex items-center justify-center text-black font-semibold text-sm">
                                         {testimonial.avatar}
                                     </div>
                                     <div>
@@ -424,7 +424,7 @@ function Landing() {
                                     "relative p-8 rounded-2xl border transition-all",
                                     tier.highlighted
                                         ? "border-[#c8ff00]/50 bg-[#c8ff00]/5 scale-105"
-                                        : "border-white/10 bg-white/[0.02] hover:border-white/20"
+                                        : "border-white/10 bg-white/2 hover:border-white/20"
                                 )}
                             >
                                 {tier.highlighted && (
@@ -471,7 +471,7 @@ function Landing() {
             {/* CTA Section */}
             <section className="py-24 px-6">
                 <div className="max-w-4xl mx-auto relative">
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#c8ff00]/20 via-purple-500/20 to-[#c8ff00]/20 rounded-3xl blur-3xl" />
+                    <div className="absolute inset-0 bg-linear-to-r from-[#c8ff00]/20 via-purple-500/20 to-[#c8ff00]/20 rounded-3xl blur-3xl" />
                     <div className="relative p-12 rounded-3xl border border-white/10 bg-[#111] text-center">
                         <h2 className="font-clash font-bold text-4xl sm:text-5xl tracking-tight mb-4">
                             Ready to ship faster?
